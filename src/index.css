@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --core-radius: 2px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #F2EEE3;
+  color: #1B2024;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background-color: #10161A;
+  color: #ECE7DA;
+}
+
+::selection {
+  background: #D98B4A;
+  color: #10161A;
+}
+
+:focus-visible {
+  outline: 2px solid #D98B4A;
+  outline-offset: 3px;
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #5C84A6;
+  border-radius: 6px;
+}
+
+.font-mono-label {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.06em;
+}
+
+/* The strata divider used between every section */
+.strata-rule {
+  display: flex;
+  width: 100%;
+  height: 5px;
+  overflow: hidden;
+}
+.strata-rule span {
+  flex: 1;
+  transform-origin: top;
+}
