@@ -112,7 +112,7 @@ export const projects = [
       'Secure APIs',
     ],
     github: 'https://github.com/AhsanIlahi0/Chatly',
-    demo: 'https://chatly-demo.example.com',
+    demo: 'https://chat-ly.dev',
     featured: true,
   },
   {
