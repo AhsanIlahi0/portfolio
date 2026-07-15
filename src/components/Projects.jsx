@@ -66,14 +66,14 @@ export default function Projects() {
               >
                 GitHub
               </a>
-              {/* <a
+               <a
                 href={project.demo}
                 target="_blank"
                 rel="noreferrer"
                 className="font-mono-label text-xs uppercase tracking-widest px-5 py-2.5 bg-clay dark:bg-copper text-parchment dark:text-ink rounded-sm hover:opacity-90 transition-opacity"
               >
                 Live Demo
-              </a> */}
+              </a> 
             </div>
           </div>
         </Reveal>
