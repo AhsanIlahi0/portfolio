@@ -1,4 +1,8 @@
+import { lazy, Suspense } from 'react'
 import { useTheme } from './hooks/useTheme'
+import { useSmoothScroll } from './hooks/useSmoothScroll'
+
+const Scene3D = lazy(() => import('./components/Scene3D'))
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -19,7 +23,7 @@ const LABELS = [
 
 function Divider({ label }) {
   return (
-    <div className="px-6 max-w-6xl mx-auto">
+    <div className="relative z-10 px-6 max-w-6xl mx-auto opacity-70 hover:opacity-100 transition-opacity">
       <Strata label={label} />
     </div>
   )
@@ -27,11 +31,19 @@ function Divider({ label }) {
 
 export default function App() {
   const { theme, toggle } = useTheme()
+  useSmoothScroll()
 
   return (
-    <div className="bg-parchment dark:bg-ink min-h-screen font-body">
+    <div className="relative min-h-screen bg-parchment dark:bg-ink font-body text-graphite dark:text-bone selection:bg-copper selection:text-ink transition-colors duration-500 overflow-x-hidden">
+      {/* Dynamic 3D WebGL Background */}
+      <Suspense fallback={null}>
+        <Scene3D theme={theme} />
+      </Suspense>
+
+      {/* Main Foreground Content */}
       <Nav theme={theme} onToggleTheme={toggle} />
-      <main>
+      
+      <main className="relative z-10">
         <Hero />
         <Divider label={LABELS[0]} />
         <About />
@@ -50,6 +62,7 @@ export default function App() {
         <Divider label={LABELS[7]} />
         <Contact />
       </main>
+
       <Footer />
     </div>
   )
