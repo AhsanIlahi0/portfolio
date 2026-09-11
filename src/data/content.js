@@ -131,6 +131,21 @@ export const projects = [
     github: 'https://github.com/AhsanIlahi0/Moseeqify',
     featured: false,
   },
+  {
+    id: 'FI ',
+    name:'Fitness Tracker',
+    tagline:'A fitness tracker app that allows users to log workouts, track progress, and set fitness goals.',
+    tech:['React','Node.js','Express','MongoDB'],
+    features:[
+      'Workout logging',
+      'Progress tracking',
+      'Goal setting',
+      'Responsive UI',
+    ],
+    description:'A fitness tracker app that allows users to log workouts, track progress, and set fitness goals.',
+    github:'https://github.com/AhsanIlahi0/fitness-tracker-frontend.git',
+    demo:'https://fitness-tracker-frontend-omega.vercel.app/#dashboard',
+  }
 ]
 
 export const caseStudy = {
