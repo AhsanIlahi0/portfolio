@@ -3,6 +3,31 @@ import * as THREE from 'three'
 
 export default function Scene3D({ theme = 'dark' }) {
   const canvasRef = useRef(null)
+  const themeRef = useRef(theme)
+  const sceneStateRef = useRef(null)
+
+  useEffect(() => {
+    themeRef.current = theme
+    const sceneState = sceneStateRef.current
+    if (!sceneState) return
+
+    const isDark = themeRef.current === 'dark'
+    sceneState.scene.fog.color.set(isDark ? 0x10161a : 0xf2eee3)
+    sceneState.ambientLight.color.set(isDark ? 0xffffff : 0x333333)
+    sceneState.ambientLight.intensity = isDark ? 0.9 : 1.2
+    sceneState.pointLight1.intensity = isDark ? 2.5 : 1.5
+    sceneState.pointLight2.intensity = isDark ? 2.0 : 1.2
+    sceneState.particleMaterial.opacity = isDark ? 0.65 : 0.45
+    sceneState.icoMaterial.opacity = isDark ? 0.4 : 0.25
+    sceneState.octMaterial.opacity = isDark ? 0.55 : 0.35
+    sceneState.torusMaterial1.opacity = isDark ? 0.4 : 0.2
+    sceneState.torusMaterial2.opacity = isDark ? 0.35 : 0.18
+    sceneState.prismMaterial.opacity = isDark ? 0.45 : 0.25
+    sceneState.tetraMaterial.opacity = isDark ? 0.4 : 0.2
+    sceneState.gridMaterial.opacity = isDark ? 0.18 : 0.1
+    sceneState.torusKnotMaterial.opacity = isDark ? 0.35 : 0.18
+    sceneState.ringMaterial.opacity = isDark ? 0.4 : 0.2
+  }, [theme])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -13,7 +38,7 @@ export default function Scene3D({ theme = 'dark' }) {
 
     // ── SCENE & CAMERA ──
     const scene = new THREE.Scene()
-    const isDark = theme === 'dark'
+    const isDark = themeRef.current === 'dark'
     
     // Background fog for infinite soft depth
     const fogColor = isDark ? 0x10161a : 0xf2eee3
@@ -331,8 +356,26 @@ export default function Scene3D({ theme = 'dark' }) {
 
     render()
 
+    sceneStateRef.current = {
+      scene,
+      ambientLight,
+      pointLight1,
+      pointLight2,
+      particleMaterial,
+      icoMaterial: icoMat,
+      octMaterial: octMat,
+      torusMaterial1: torusMat1,
+      torusMaterial2: torusMat2,
+      prismMaterial: prismLineMat,
+      tetraMaterial: tetraMat,
+      gridMaterial: gridPlaneMat,
+      torusKnotMaterial: torusKnotMat,
+      ringMaterial: ringMat1,
+    }
+
     // ── CLEANUP & DISPOSAL ──
     return () => {
+      sceneStateRef.current = null
       cancelAnimationFrame(animationFrameId)
       window.removeEventListener('mousemove', onMouseMove)
       window.removeEventListener('scroll', updateScroll)
@@ -366,7 +409,7 @@ export default function Scene3D({ theme = 'dark' }) {
 
       renderer.dispose()
     }
-  }, [theme])
+  }, [])
 
   return (
     <canvas

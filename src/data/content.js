@@ -55,15 +55,6 @@ export const skills = [
     ],
   },
   {
-    id: 'database',
-    label: 'Database',
-    accent: 'moss',
-    items: [
-      { name: 'MongoDB', note: 'Document modelling' },
-      { name: 'Mongoose', note: 'Schemas & validation' },
-    ],
-  },
-  {
     id: 'tools',
     label: 'Tools',
     accent: 'bone',
@@ -77,6 +68,16 @@ export const skills = [
       {name: 'sqlserver', note: 'Database management'},
     ],
   },
+  {
+    id: 'database',
+    label: 'Database',
+    accent: 'slate',
+    items: [
+      { name: 'MongoDB', note: 'Document-oriented NoSQL' },
+      { name: 'SQLServer', note: 'Relational database management' },
+    ],
+  },
+  
 ]
 
 export const experience = [
@@ -93,6 +94,18 @@ export const experience = [
       'Worked in Git across feature branches and pull requests',
     ],
   },
+  {
+    role:'Software Quality Assurance Engineer'  , 
+    company: 'FOG technologies',
+    duration: 'Jan 2025 – Dec 2025',
+    points: [
+      'Developed and executed test plans for game applications, ensuring high-quality releases',
+      'Collaborated with developers to identify and resolve game defects, improving overall product quality',
+      'Conducted performance testing and optimization, resulting in improved game performance and user experience',
+      'Utilized automated testing tools to streamline the testing process and increase efficiency',
+      'Participated in code reviews and provided feedback on game design and functionality, contributing to the overall success of the project',
+    ],
+  }
 ]
 
 export const projects = [
@@ -150,18 +163,12 @@ export const projects = [
 
 export const caseStudy = {
   project: 'chatly',
-  problem:
-    'Teams needed a lightweight chat tool that felt instant — most existing options were either too heavy to self-host or too slow for real conversation.',
-  planning:
-    'Scoped the core loop first: one-to-one messaging, presence, and auth. Media sharing and group chat were deliberately deferred to a second milestone.',
-  architecture:
-    'A React client talks to an Express API over REST for auth and history, while Socket.io handles the live event layer — messages, typing state, and presence — over a single persistent connection per user.',
-  challenges:
-    'Keeping message order consistent when a user reconnects after a dropped socket was the hardest part — messages sent while offline needed to arrive in the right place, not just at the end.',
-  solutions:
-    'Each message got a server-assigned timestamp and a per-conversation sequence number, so the client could always reconcile its local state against the server\'s source of truth on reconnect.',
-  result:
-    'A chat app that holds up under flaky connections, with sub-second delivery on a stable network and no duplicated or out-of-order messages after reconnect.',
+  problem: 'Teams needed a lightweight chat tool that felt instant — most existing options were either too heavy to self-host or too slow for real conversation.',
+  planning: 'Scoped the core loop first: one-to-one messaging, presence, and auth. Media sharing and group chat were deliberately deferred to a second milestone.',
+  architecture: 'A React client talks to an Express API over REST for auth and history, while Socket.io handles the live event layer — messages, typing state, and presence — over a single persistent connection per user.',
+  challenges: 'Keeping message order consistent when a user reconnects after a dropped socket was the hardest part — messages sent while offline needed to arrive in the right place, not just at the end.',
+  solutions: 'Each message got a server-assigned timestamp and a per-conversation sequence number, so the client could always reconcile its local state against the server\'s source of truth on reconnect.',
+  result: 'A chat app that holds up under flaky connections, with sub-second delivery on a stable network and no duplicated or out-of-order messages after reconnect.',
 }
 
 export const education = {

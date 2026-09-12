@@ -77,7 +77,7 @@ export default function Skills() {
                 </div>
 
                 {/* Items Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {group.items.map((item) => (
                     <div
                       key={item.name}
